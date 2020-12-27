@@ -7,15 +7,15 @@
 读取Excel文件 >> 根据规则处理数据（*rule.dict* ,*confighanlder.py*）>> 保存处理好的数据为dat文件(*datWriter.py*) >> 根据dat文件生成对应的log文件（*logWriter.py*） >> 将生成好的文件存入压缩包（*zipFile.py*）
 
 ## 进展
-### [ ]API
-- [ ]Excel报表读取
-- [ ]规则处理函数
-- [ ]保存dat文件
-- [X]生成log文件
-- [ ]生成压缩包
-### [ ]GUI
-- [ ]UI设计
-- [ ]slot函数定义
+### API
+- [ ] Excel报表读取
+- [ ] 规则处理函数
+- [ ] 保存dat文件
+- [x] 生成log文件
+- [ ] 生成压缩包
+### GUI
+- [ ] UI设计
+- [ ] slot函数定义
  
 ## 赞赏
 如果你觉得这个工具很赞,可以赞赏作者给予鼓励。（下次一定也OK:joy:）
