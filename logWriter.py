@@ -22,19 +22,21 @@ def getFileMD5(filename):
     return m.hexdigest(), count  # 返回md5对象
 
 
-def logWriter(filename):
+def logWriter(filename, path =''):
     fileName = filename
     fileMD5, _ = getFileMD5(fileName)
     fileSize = os.path.getsize(filename)
-    fileCtime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getctime(filename)))
+    fileCtime = time.strftime(
+        '%Y-%m-%d %H:%M:%S', time.localtime(os.path.getctime(filename)))
     # 大文件存在性能问题
     fileEntry = len(open(filename, 'r', encoding='utf-8').readlines())
     logInfo = [fileName, fileMD5, fileSize, fileCtime, fileEntry]
     content = '\n'.join(str(x) for x in logInfo)
-    logFilename = filename.replace('dat', 'log')
+    logFilename = os.path.join(path,filename.replace('dat', 'log'))
     with open(logFilename, 'w', encoding='utf-8') as f:
         f.write(content)
     return
 
 
-logWriter('personal.dat')
+if __name__ == '__main__':
+    logWriter('personal.dat')
