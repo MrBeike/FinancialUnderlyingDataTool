@@ -1,2 +1,7 @@
 tempTest/
 test.py
+__pycache__
+*.pyc
+*.xlsx
+*.dat
+*.log
