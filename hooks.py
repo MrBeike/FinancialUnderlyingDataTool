@@ -1,4 +1,5 @@
 import hashlib
+from datetime import datetime
 
 
 def decimal(num, digit):
@@ -37,3 +38,11 @@ def idMask(type, id):
     else:
         idMasked = id
     return idMasked
+
+
+def dateParser(date):
+    try:
+        dateParsered = datetime.strftime(date, '%Y-%m-%d')
+    except TypeError:
+        dateParsered = date
+    return dateParsered

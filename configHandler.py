@@ -1,5 +1,5 @@
 import pickle
-from hooks import decimal0, decimal2, decimal5
+from hooks import decimal0, decimal2, decimal5, idMask, dateParser
 
 # 设置dict规则适配数据列特殊处理函数
 rules = {
@@ -7,7 +7,8 @@ rules = {
     'TYJDFS': {13: decimal2, 14: decimal2,  16: decimal5,  18: decimal5},
     'CLDWDK': {19: decimal2, 20: decimal2,  22: decimal5,  24: decimal5},
     'DWDKFS': {19: decimal2, 20: decimal2,  22: decimal5,  24: decimal5},
-    'CLGRDK': {14: decimal2, 15: decimal2,  17: decimal5,  19: decimal5},
+    # 'CLGRDK': {14: decimal2, 15: decimal2,  17: decimal5,  19: decimal5},
+    'CLGRDK': {10: dateParser, 11: dateParser, 12: dateParser, 14: decimal2, 15: decimal2,  17: decimal5,  19: decimal5, 21: dateParser},
     'GRDKFS': {14: decimal2, 15: decimal2,  17: decimal5,  19: decimal5},
     'CLZXDK': {},
     'DBHTXX': {10: decimal2, 11: decimal2,  12: decimal2},
@@ -48,3 +49,7 @@ def configReader(filename):
     rule = pickle.load(fileHandler)
     fileHandler.close()
     return rule
+
+
+if __name__ == '__main__':
+    configWriter(rules, 'rule.dict')
