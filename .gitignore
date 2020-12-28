@@ -1,6 +1,7 @@
 tempTest/
-test.py
 __pycache__
+.vscode
+test.py
 *.pyc
 *.xlsx
 *.dat
