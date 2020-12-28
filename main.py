@@ -1,6 +1,6 @@
 from zipFile import zipFile
 from logWriter import logWriter
-from configHandler import configReader
+from configHandler import configReader, configWriter, rules
 from datWriter import datWriter
 import os
 
@@ -10,7 +10,7 @@ class FUDT:
         self.configFilename = 'rule.dict'
 
     def getFileInfo(self):
-        fileUrl = input('请输入EXCEl文件完整路径：')
+        fileUrl = input('请输入EXCEl文件完整路径(支持拖拽文件哦)：')
         if fileUrl:
             filePath, filename = os.path.split(fileUrl)
             pureFilename, extension = os.path.splitext(filename)
@@ -23,6 +23,7 @@ class FUDT:
         return
 
     def configHandler(self):
+        configWriter(rules,self.configFilename)
         config = configReader(self.configFilename)
         self.reportConfig = config[self.reportCode]
         return
