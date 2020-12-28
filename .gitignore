@@ -3,7 +3,10 @@ __pycache__
 .vscode
 test.py
 *.pyc
+*.xls
 *.xlsx
+*.doc
+*.docx
 *.dat
 *.log
 *.zip
