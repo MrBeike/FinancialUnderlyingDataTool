@@ -2,6 +2,7 @@ tempTest/
 __pycache__
 .vscode
 test.py
+*.ipynb
 *.pyc
 *.xls
 *.xlsx
