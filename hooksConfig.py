@@ -1,5 +1,7 @@
 from parse import parse, compile
 from hooks import decimal
+import pandas as pd
+import numpy as np
 
 string = 'I'
 string1 = 'C..18'
@@ -15,6 +17,7 @@ def hookParser(string):
             regex = compile(pattern)
             result = regex.parse(string)
             if result != None:
+                print('result:',result)
                 return result.named
 
 def hookMaker(format):
@@ -28,7 +31,17 @@ def hookMaker(format):
         hook = ''
     return hook
 
+def readReportRule(filename):
+    
+    all = pd.read_excel(filename,sheet_name=None)
+    sheetNames = all.keys()
+    for sheetName in sheetNames:
+        print(sheetName)
+        df = pd.read_excel(filename,sheet_name=sheetName)
+        df.drop(df[np.isnan(df['序号'])].index, inplace=True)
+        df['hook'] = df['长度'].apply(lambda x: hookMaker(hookParser(x)))
+    return df
 
-result = hookParser(string2)
-hook = hookMaker(result)
-print(hook)
+
+df = readReportRule('报表规范.xls')
+print(df)
