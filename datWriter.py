@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from configHandler import configReader
+from hooksConfig import configReader
 from hooks import *
 
 
@@ -10,6 +10,7 @@ def datWriter(filename, reportConfig, path=''):
     for key, value in reportConfig.items():
         columnName = columnNames[key-1]
         # FIXME idMask函数补丁 如何区分各类证件？
+        # BUG 证件类型和证件号不一定是前后关系？
         if value.__name__ == 'idMask':
             assistColumnName = columnNames[key-2]
             assistDF = df[assistColumnName]
@@ -32,6 +33,7 @@ def datWriter(filename, reportConfig, path=''):
 
 
 if __name__ == '__main__':
-    rules = configReader('rule.dict')
+    rules = configReader('rule')
+    rule = rules['CLGRDK']
     filename = '91341700573031656T_CLGRDK_20201130.xlsx'
-    datWriter(filename, rules)
+    datWriter(filename,rule)
