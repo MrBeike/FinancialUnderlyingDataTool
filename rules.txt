@@ -1,6 +1,3 @@
-import pickle
-from hooks import decimal0, decimal2, decimal5, idMask, dateParser
-
 # 设置dict规则适配数据列特殊处理函数
 rules = {
     'CLTYJD': {11: decimal2, 12: decimal2,  14: decimal5,  16: decimal5},
@@ -34,21 +31,3 @@ rules = {
     'SPVFSX': {13: decimal2, 14: decimal2},
     'WQYBJY': {7: decimal2},
 }
-
-
-def configWriter(obj, filename):
-    fileHandler = open(filename, 'wb')
-    pickle.dump(obj, fileHandler)
-    fileHandler.close()
-    return
-
-
-def configReader(filename):
-    fileHandler = open(filename, 'rb')
-    rule = pickle.load(fileHandler)
-    fileHandler.close()
-    return rule
-
-
-if __name__ == '__main__':
-    configWriter(rules, 'rule.dict')
