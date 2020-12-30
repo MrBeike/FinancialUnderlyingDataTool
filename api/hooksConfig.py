@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 import numpy as np
 from parse import parse, compile
-from hooks import decimal0, decimal2, decimal5, idMask, dateParser
+from .hooks import decimal0, decimal2, decimal5, idMask, dateParser
 
 
 def hookParser(string):

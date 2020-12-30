@@ -1,13 +1,13 @@
-from zipFile import zipFile
-from logWriter import logWriter
-from configHandler import configReader, configWriter, rules
-from datWriter import datWriter
+from api.zipFile import zipFile
+from api.logWriter import logWriter
+from api.hooksConfig import configReader, configWriter
+from api.datWriter import datWriter
 import os
 
 
 class FUDT:
     def __init__(self):
-        self.configFilename = 'rule.dict'
+        self.configFilename = 'resource\\rule'
 
     def getFileInfo(self):
         fileUrl = input('请输入EXCEl文件完整路径(支持拖拽文件哦)：')
@@ -23,7 +23,8 @@ class FUDT:
         return
 
     def configHandler(self):
-        configWriter(rules,self.configFilename)
+        # TODO 提供更新规则选择入口
+        # configWriter(rules,self.configFilename)
         config = configReader(self.configFilename)
         self.reportConfig = config[self.reportCode]
         return

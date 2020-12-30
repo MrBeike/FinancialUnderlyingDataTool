@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-from hooksConfig import configReader
-from hooks import *
+from .hooksConfig import configReader
+from .hooks import decimal0, decimal2, decimal5, idMask, dateParser
 
 
 def datWriter(filename, reportConfig, path=''):
